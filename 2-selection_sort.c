@@ -9,6 +9,7 @@
 void swap(int *xp, int *yp)
 {
 	int temp;
+
 	temp = *xp;
 	*xp = *yp;
 	*yp = temp;
@@ -24,24 +25,25 @@ void swap(int *xp, int *yp)
 
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j;
-	int *min;
+	size_t i, j, min;
 
 	if (array == NULL || size < 2)
 	return;
 
 	for (i = 0; i < size - 1; i++)
 	{
-		min = array + i;
+		min = i;
 		for (j = i + 1; j < size; j++)
 		{
-			if (array[j] < *min)
-			min = array + j;
+			if (array[j] < array[min])
+			min = j;
 		}
 
-		if (min != (array + i))
-		swap(min, array + i);
-		print_array(array, size);
+		if (min != i)
+		{
+			swap(&array[i], &array[min]);
+			print_array(array, size);
+		}
 
 	}
 }
