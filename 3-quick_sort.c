@@ -23,28 +23,25 @@ void swap(int *xp, int *yp)
  *@size: array size.
  *Return: int (the location)
  */
-int partition(int *arr, int lb, int ub, size_t size)
+int partition(int *array, int low, int high, size_t size)
 {
-	int pivot, start, end;
+	 int pivot = array[high];
+    int i = low - 1;
+    int j;
 
-	pivot = arr[lb];
-	start = lb;
-	end = ub;
+    for (j = low; j < high; j++)
+    {
+        if (array[j] <= pivot)
+        {
+            i++;
+            swap(&array[i], &array[j]);
+			print_array(array, size);
+        }
+    }
 
-	while (start < end)
-	{
-		while (arr[start] <= pivot)
-		start++;
+    swap(&array[i + 1], &array[high]);
 
-		while (arr[end] > pivot)
-		end--;
-
-		if (start < end)
-		swap(&arr[start], &arr[end]);
-	}
-	swap(&arr[lb], &arr[end]);
-	print_array(arr, size);
-	return (end);
+    return (i + 1);
 }
 
 /**
