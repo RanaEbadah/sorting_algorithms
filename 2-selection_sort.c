@@ -1,4 +1,3 @@
-2-selection_sort.c
 #include "sort.h"
 
 /**
