@@ -19,8 +19,8 @@ void swap_ints(int *a, int *b)
  * the lomuto partition scheme (last element as pivot).
  * @array: The array of integers.
  * @size: The size of the array.
- * @left: The starting index of the subset to order.
- * @right: The ending index of the subset to order.
+ * @lb: The starting index of the subset to order.
+ * @ub: The ending index of the subset to order.
  *
  * Return: The final partition index.
  */
@@ -29,7 +29,7 @@ int partition(int *array, size_t size, int lb, int ub)
 	int *pivot, above, below;
 
 	pivot = array + ub;
-	
+
 	for (above = below = lb; below < ub; below++)
 	{
 		if (array[below] < *pivot)
@@ -56,8 +56,8 @@ int partition(int *array, size_t size, int lb, int ub)
  * lomutoQuicSort - Implement the quicksort algorithm through recursion.
  * @array: An array of integers to sort.
  * @size: The size of the array.
- * @left: The starting index of the array partition to order.
- * @right: The ending index of the array partition to order.
+ * @lb: The starting index of the array partition to order.
+ * @ub: The ending index of the array partition to order.
  *
  * Description: Uses the Lomuto partition scheme.
  */
@@ -75,7 +75,7 @@ void lomutoQuicSort(int *array, size_t size, int lb, int ub)
 
 /**
  * quick_sort - Sort an array of integers in ascending
- *              order using the quicksort algorithm.
+ *order using the quicksort algorithm.
  * @array: An array of integers.
  * @size: The size of the array.
  *
