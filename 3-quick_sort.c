@@ -67,9 +67,9 @@ void lomutoQuicSort(int *array, size_t size, int lb, int ub)
 
 	if (ub - lb > 0)
 	{
-		key = lomuto_partition(array, size, lb, ub);
-		lomuto_sort(array, size, lb, key - 1);
-		lomuto_sort(array, size, key + 1, ub);
+		key = partition(array, size, lb, ub);
+		lomutoQuicSort(array, size, lb, key - 1);
+		lomutoQuicSort(array, size, key + 1, ub);
 	}
 }
 
@@ -87,5 +87,5 @@ void quick_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	lomuto_sort(array, size, 0, size - 1);
+	lomutoQuicSort(array, size, 0, size - 1);
 }
